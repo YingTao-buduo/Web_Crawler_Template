@@ -1,5 +1,5 @@
 import get_source_data as source_data_getter
-import write_2_excel as data_writer
+import openpyxl
 
 my_url = ''  # target url
 my_path = ''  # write path
@@ -26,10 +26,10 @@ def start(url, path, filename):
 
     try:
         # write your data to excel
-        print('write' + + 'successfully')
+        print('write' + '' + 'successfully')
     except BaseException:
         print('!!!Get web page failed. URL: ' + url)
-        print('write' + + 'failed')
+        print('write' + '' + 'failed')
         print('1. input \'save\' to save file')
         print('2. input \'restart\' to continue')
         next = input()
@@ -37,7 +37,7 @@ def start(url, path, filename):
             workbook.save(path + '/' + filename + '.xlsx')
             print(filename + '.xlsx saved')
         if next == 'restart':
-            write(data, path, filename)
+            start(data, path, filename)
         return
 
 
@@ -45,5 +45,5 @@ if __name__ == '__main__':
     workbook = openpyxl.Workbook()
     sheet = workbook.active
     start(my_url, my_path, my_filename)
-    workbook.save(path + '/' + filename + '.xlsx')
+    workbook.save(my_path + '/' + my_filename + '.xlsx')
     print('Done')
