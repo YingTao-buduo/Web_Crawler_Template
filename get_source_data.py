@@ -7,7 +7,7 @@ def get(url):
         # 'Accept': 'accept'
     }
     try:
-        response = requests.get(URL, headers=headers, verify=False)
+        response = requests.get(url, headers=headers, verify=False)
         if response.status_code == 200:
             return response.text
         if response.status_code == 403:
